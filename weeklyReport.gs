@@ -17,3 +17,12 @@ function sendWeeklyReport() {
   });
 
   var pdfBlob = response.getBlob().setName("Weekly_CRM_Report.pdf");
+
+  // Send the PDF to your email
+  MailApp.sendEmail({
+    to: Session.getActiveUser().getEmail(),
+    subject: "Weekly CRM Report",
+    body: "Here is your weekly CRM performance report.",
+    attachments: [pdfBlob]
+  });
+}
